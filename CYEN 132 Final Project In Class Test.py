@@ -323,10 +323,17 @@ Council to prevent espionage and terror attacks. Good luck Captain! """
 ########################################################################
 #Ask for user input for password (password not yet available to player)#
 ########################################################################
+player = input('Enter the password: ')
 
 ##########################################################################
 #Ask for user input for beginning the puzzle (Simon for testing) sequence#
 ##########################################################################
+player = input('Enter answer to begin: ')
+    if yes == True:
+        SimonGameSeq()
+    else:
+        print "RandPassGen()"
+        
 
 ###############################################
 #If user input is yes for the puzzle/Simon seq#
@@ -352,11 +359,11 @@ activate the guns. Good luck Captain."""
 #these lines of comment will be deleted along with most of the other place holder comments#
 #in the main code section of this project.                                                #
 ###########################################################################################
-if password == True:
-    print """Congrats you did it! Earth has been destroyed! We discovered an ancient Earthling
-    game before the planet was destroyed. Why don't you give it a whirl?"""
-    sleep(10)
-    EndGame()
+    if password == True:
+        print """Congrats you did it! Earth has been destroyed! We discovered an ancient Earthling
+        game before the planet was destroyed. Why don't you give it a whirl?"""
+        sleep(10)
+        EndGame()
 
 #########################################################################################
 #Note: (On 5/3/17) It is crucial that we finish the input command lines, the GUI, and
