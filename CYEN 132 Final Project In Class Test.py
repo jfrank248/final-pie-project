@@ -61,6 +61,7 @@ from sys import exit #pong v1.0; demonstration purposes only
 #sequence incorrectly on their first try.
 #################################################
 myGlobal = 0
+myGlobalTries = 3
 #################################################
 
 
@@ -191,6 +192,63 @@ def SimonGameSeq():
         GPIO.cleanup()
 
 
+
+
+#function for Password input
+def PassReq():
+    password = input('Weapons Systems Password: ')
+    if password == RandPassGen():
+        print('Password {} Accpeted! Firing Weapons Systems!'.format(password))
+        EndGame()
+    else:
+        print "Incorrect password. You have {} tries remaining!".format(myGlobalTries)
+        password = input('Weapons Systems Password: ')
+        myGlobalTries -= 1
+
+def death():
+    print " " * 17 + "u" * 7
+    print " " * 13 + "u" * 2 + "$" * 11 + "u" * 2
+    print " " * 10 + "u" * 2 + "$" * 17 + "u" * 2
+    print " " * 9 + "u" + "$" * 21 + "u"
+    print " " * 8 + "u" + "$" * 23 + "u"
+    print " " * 7 + "u" + "$" * 25 + "u"
+    print " " * 7 + "u" + "$" * 25 + "u"
+    print " " * 7 + "u" + "$" * 6 + "\"" + " " * 3 + "\"" + "$" * 3 +\
+"\"" + " " * 3 + "\"" + "$" * 6 + "u"
+    print " " * 7 + "\"" + "$" * 4 + "\"" + " " * 6 + "u$u" + " " * 7\
++ "$" * 4 + "\""
+    print " " * 8 + "$" * 3 + "u" + " " * 7 + "u$u" + " " * 7 + "u" +\
+"$" * 3
+    print " " * 8 + "$" * 3 + "u" + " " * 6 + "u" + "$" * 3 + "u" + "\
+" * 6 + "u" + "$" * 3
+    print " " * 9 + "\"" + "$" * 4 + "u" * 2 + "$" * 3 + " " * 3 +\
+"$" * 3 + "u" * 2 + "$" * 4 + "\""
+    print " " * 10 + "\"" + "$" * 7 + "\"" + " " * 3 + "\"" + "$" * 7\
++ "\""
+    print " " * 12 + "u" + "$" * 7 + "u" + "$" * 7 + "u"
+    print " " * 13 + "u$\"$\"$\"$\"$\"$\"$u"
+    print " " * 2 + "u" * 3 + " " * 8 + "$" * 2 + "u$ $ $ $ $u" + "$"\
+* 2 + " " * 7 + "u" * 3
+    print " u" + "$" * 4 + " " * 8 + "$" * 5 + "u$u$u" + "$" * 3 + "\
+" * 7 + "u" + "$" * 4
+    print " " * 2 + "$" * 5 + "u" * 2 + " " * 6 + "\"" + "$" * 9 +\
+"\"" + " " * 5 + "u" * 2 + "$" * 6
+    print "u" + "$" * 11 + "u" * 2 + " " * 4 + "\"" * 5 + " " * 4 +\
+"u" * 4 + "$" * 10
+    print "$" * 4 + "\"" * 3 + "$" * 10 + "u" * 3 + " " * 3 + "u" * 2\
++ "$" * 9 + "\"" * 3 + "$" * 3 + "\""
+    print " " + "\"" * 3 + " " * 6 + "\"" * 2 + "$" * 11 + "u" * 2 +\
+" " + "\"" * 2 + "$" + "\"" * 3
+    print " " * 11 + "u" * 4 + " \"\"" + "$" * 10 + "u" * 3
+    print " " * 2 + "u" + "$" * 3 + "u" * 3 + "$" * 9 + "u" * 2 +\
+" \"\"" + "$" * 11 + "u" * 3 + "$" * 3
+    print " " * 2 + "$" * 10 + "\"" * 4 + " " * 11 + "\"\"" + "$" *\
+11 + "\""
+    print " " * 3 + "\"" + "$" * 5 + "\"" + " " * 22 + "\"\"" + "$" *\
+4 + "\"\""
+    print " " * 5 + "$" * 3 + "\"" + " " * 25 + "$" * 4 + "\""
+
+
 ###############################################################
 #End Game Function
 #(Will either be a game or a function, Pong V1.0 will be used
@@ -318,53 +376,67 @@ but without it we can not accomplish our mission. Your are our only hope. Activa
 the weapons systems and destroy the puny earthlings, but be careful. If the weapons
 system password is keyed incorrectly three times the ship will self-destruct.
 It is a foolish concept we know, but it was implemented by the Mar's High
-Council to prevent espionage and terror attacks. Good luck Captain! """
+Council to prevent espionage and terror attacks. Good luck Captain! Note: Type
+"Command Override. Password Recovery." to progress deeper into the game when
+the password input is displayed. Good Luck!"""
 
 ########################################################################
-#Ask for user input for password (password not yet available to player)#
 ########################################################################
-player = input('Enter the password: ')
 
-##########################################################################
-#Ask for user input for beginning the puzzle (Simon for testing) sequence#
-##########################################################################
-player = input('Enter answer to begin: ')
-    if yes == True:
-        SimonGameSeq()
-    else:
-        print "RandPassGen()"
-        
-
-###############################################
-#If user input is yes for the puzzle/Simon seq#
-###############################################
-while myGlobal < 3:
-    SimonGameSeq()
-else:
-    print "RandPassGen()"
-###################################################################
-#if no print "very well" and wait 15s before asking for input again
-###################################################################
-
-print """Fantastic Job Captain! You now how the key to activate the
-weapons systems and defeat the Earthlings. All thats left now is to
-activate the guns. Good luck Captain."""
-
-########################
-#Ask for password again#
-########################
-
-###########################################################################################
-#next line is a Boolean and is subject to change once the input lines are actually written#
-#these lines of comment will be deleted along with most of the other place holder comments#
-#in the main code section of this project.                                                #
-###########################################################################################
-    if password == True:
-        print """Congrats you did it! Earth has been destroyed! We discovered an ancient Earthling
-        game before the planet was destroyed. Why don't you give it a whirl?"""
-        sleep(10)
+while MyGlobalTries > 0:
+    password = input('Weapons Systems Password: ')
+    if password == RandPassGen():
+        #covers the situation in which the password was correct
+        print('Password {} Accpeted! Firing Weapons Systems!'.format(password))
+        #End Game Sequence Code should be inserted here
+        print('Here is a small reward for all of your hard work!')
+        sleep(5)
         EndGame()
+        
+    elif password == "Command Override. Password Recovery.":
+        beginSimSeq = input('Would you like to solve the Sequence to recover the password? Yes or No?: ')
 
+        if beginSimSeq == "Yes":
+            while myGlobal < 3:
+                SimonGameSeq()
+
+            #Prints the password once the player achieves his/her simSeq
+            else:
+                print """Fantastic Job Captain! You now how the key to activate the
+                weapons systems and defeat the Earthlings. All thats left now is to
+                activate the guns. Good luck Captain."""
+                print "RandPassGen()"
+                PassReq()
+
+        elif beginSimSeq == "No":
+            print "Very Well. The option still remains. You must wait 15s to retry, but it is your final attempt."
+            sleep(15)
+            beginSimSeq = input('Would you like to solve the Sequence to recover the password? Yes or No?: ')
+
+            if beginSimSeq == "Yes":
+                #runs the game until the player successfully completes it 3 times in a row
+                while myGlobal < 3:
+                    SimonGameSeq()
+
+                    #Prints the password once the player achieves his/her simSeq
+                else:
+                    print """Fantastic Job Captain! You now how the key to activate the
+                    weapons systems and defeat the Earthlings. All thats left now is to
+                    activate the guns. Good luck Captain."""
+                    print "RandPassGen()"
+                        
+            elif beginSimSeq == "No":
+                print "Mission Failed!"
+                death()
+                #print a death icon/end game function here
+    else:
+        #covers the situation in which the password was wrong
+        print "Incorrect password. You have {} tries remaining!".format(myGlobalTries)
+        password = input('Weapons Systems Password: ')
+        myGlobalTries -= 1
+
+else:
+    death()
 #########################################################################################
 #Note: (On 5/3/17) It is crucial that we finish the input command lines, the GUI, and
 #finish piecing together the main part of this code on 5/3/17 and 5/4/17 so that we can
